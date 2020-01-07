@@ -23,6 +23,10 @@ var translate = (function () {
             translation: $.trim($translation.val())
         };
 
+        //if(!$translation.data('id')){
+        //    console.log("if works");
+        //    data.id = $translation.attr('id')
+        //}
         helpers.post($('#language_id').data('url'), data);
     }
 

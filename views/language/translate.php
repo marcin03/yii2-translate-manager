@@ -11,6 +11,7 @@ use yii\grid\GridView;
 use yii\widgets\ActiveForm;
 use lajax\translatemanager\helpers\Language;
 use lajax\translatemanager\models\Language as Lang;
+use dosamigos\ckeditor\CKEditor;
 
 /* @var $this \yii\web\View */
 /* @var $language_id string */
@@ -67,8 +68,33 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 'label' => Yii::t('language', 'Translation'),
                 'content' => function ($data) {
-                    return "Test text".
-                        Html::textarea('LanguageTranslate[' . $data->id . ']', $data->translation, ['class' => 'form-control translation', 'data-id' => $data->id, 'tabindex' => $data->id]);
+
+                    $ckEditorInsteadTextarea = Yii::$app->getModule('translatemanager')->ckEditorInsteadTextarea;
+                    $text = $data->translation;
+
+                    if ($ckEditorInsteadTextarea===true||($ckEditorInsteadTextarea==='only-if-detect-html-tags'&&$text != strip_tags($text))) {
+                        $ckEditorConfigArrayClient = Yii::$app->getModule('translatemanager')->ckEditorConfigArray;
+                        $ckEditorConfigArrayDefault = [
+                            'name' => "LanguageTranslate[{$data->id}]",
+                            'value' => $data->translation,
+                            'options' => [
+                                'class' => 'form-control translation',//this must be "translation"
+                                'data-id' => $data->id,
+                                'tabindex' => $data->id
+                            ],
+                            'clientOptions' => [
+                                'height' => 100,
+                                'width' => "100%",
+                                'class' => 'form-control translation',
+                                'data-id' => $data->id,
+                                'tabindex' => $data->id
+                            ],
+                        ];
+                        $ckEditorConfigArray = array_replace_recursive($ckEditorConfigArrayDefault, $ckEditorConfigArrayClient);
+                        return CKEditor::widget($ckEditorConfigArray);
+                    } else {
+                        return Html::textarea('LanguageTranslate[' . $data->id . ']', $data->translation, ['class' => 'form-control translation', 'data-id' => $data->id, 'tabindex' => $data->id]);
+                    }
                 },
             ],
             [

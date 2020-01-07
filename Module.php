@@ -293,6 +293,12 @@ class Module extends \yii\base\Module
     public $scanners = [];
 
     /**
+     * @var true, false or 'only-if-detect-html-tags' ckEditorInsteadTextarea can be overriden here.
+     */
+    public $ckEditorInsteadTextarea = 'only-if-detect-html-tags';
+    public $ckEditorConfigArray = ['preset' => 'basic'];
+
+    /**
      * @throws InvalidConfigException
      */
     public function init()
