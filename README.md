@@ -30,6 +30,25 @@ Via [Composer](http://getcomposer.org/download/)
 composer require lajax/yii2-translate-manager
 ```
 
+To use this extension with ckeditor from marcin03/yii2-translate-manager custom branch, edit your composer.json:
+```
+ "require": {
+      "lajax/yii2-translate-manager": "dev-custom"
+ },
+ "repositories": [
+      {
+          "type": "vcs",
+          "url": "https://github.com/marcin03/yii2-translate-manager"
+      }
+ ],
+```
+
+and run command in Terminal for switch to marcin03/yii2-translate-manager custom branch:
+
+```
+composer update lajax/yii2-translate-manager
+```
+
 ### Migration
 
 Run the following command in Terminal for database migration:
@@ -117,6 +136,8 @@ A more complex example including database table with multilingual support is bel
         'searchEmptyCommand' => '!',    // the search string to enter in the 'Translation' search field to find not yet translated items, set to null to disable this feature
         'defaultExportStatus' => 1,     // the default selection of languages to export, set to 0 to select all languages by default
         'defaultExportFormat' => 'json',// the default format for export, can be 'json' or 'xml'
+        'ckEditorInsteadTextarea' => 'only-if-detect-html-tags', // true, false or 'only-if-detect-html-tags'
+        'ckEditorConfigArray' => ['preset' => 'basic'], // usable only if ckEditorInsteadTextarea not false
         'tables' => [                   // Properties of individual tables
             [
                 'connection' => 'db',   // connection identifier
