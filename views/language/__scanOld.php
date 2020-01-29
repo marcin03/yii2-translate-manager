@@ -36,9 +36,21 @@ use yii\helpers\Url;
                 },
             ],
             'id',
-            'category',
-            'message',
-            'languages',
+            //'category',
+            [
+                'attribute' => 'category',
+                'label' => 'Kategoria'
+            ],
+            //'message',
+            [
+                'attribute' => 'message',
+                'label' => 'Źródło'
+            ],
+            //'languages',
+            [
+                'attribute' => 'languages',
+                'label' => 'Języki'
+            ],
             [
                 'format' => 'raw',
                 'attribute' => Yii::t('language', 'Action'),

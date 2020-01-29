@@ -9,7 +9,7 @@
 /* @var $model lajax\translatemanager\models\Language */
 
 $this->title = Yii::t('language', 'Create {modelClass}', [
-    'modelClass' => 'Language',
+    'modelClass' => 'Język',
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('language', 'Languages'), 'url' => ['list']];
 $this->params['breadcrumbs'][] = $this->title;

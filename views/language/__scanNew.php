@@ -21,8 +21,16 @@ use yii\grid\GridView;
         'dataProvider' => $newDataProvider,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'category',
-            'message',
+            //'category',
+            [
+                'attribute' => 'category',
+                'label' => 'Kategoria'
+            ],
+            //'message',
+            [
+                'attribute' => 'message',
+                'label' => 'Źródło'
+            ],
         ],
     ]);
 

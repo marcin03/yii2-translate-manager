@@ -29,7 +29,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'language_id',
-            'name_ascii',
+            'name',
+            //'name_ascii',
             [
                 'format' => 'raw',
                 'filter' => Language::getStatusNames(),

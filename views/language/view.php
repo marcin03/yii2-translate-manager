@@ -33,10 +33,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'language_id',
-            'language',
-            'country',
+            //'language',
+            //'country',
             'name',
-            'name_ascii',
+            //'name_ascii',
             [
                 'label' => Yii::t('language', 'Status'),
                 'value' => $model->getStatusName(),

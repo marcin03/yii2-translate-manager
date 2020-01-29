@@ -46,9 +46,9 @@ class Language extends \yii\db\ActiveRecord
      * @translate
      */
     private static $_CONDITIONS = [
-        self::STATUS_INACTIVE => 'Inactive',
-        self::STATUS_ACTIVE => 'Active',
-        self::STATUS_BETA => 'Beta',
+        self::STATUS_INACTIVE => 'Nieaktywny',
+        self::STATUS_ACTIVE => 'Aktywny',
+        self::STATUS_BETA => 'Test',
     ];
 
     /**
@@ -74,7 +74,7 @@ class Language extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['language_id', 'language', 'country', 'name', 'name_ascii', 'status'], 'required'],
+            [['language_id', /*'language', 'country',*/ 'name', 'status'], 'required'],
             [['language_id'], 'string', 'max' => 5],
             [['language_id'], 'unique'],
             [['language_id'], 'match', 'pattern' => '/^([a-z]{2}[_-][A-Z]{2}|[a-z]{2})$/'],
