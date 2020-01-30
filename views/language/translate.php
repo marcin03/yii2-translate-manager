@@ -43,12 +43,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            [
-                'format' => 'raw',
-                'filter' => Language::getCategories(),
-                'attribute' => 'category',
-                'filterInputOptions' => ['class' => 'form-control', 'id' => 'category'],
-            ],
+            //[
+            //    'format' => 'raw',
+            //    'filter' => Language::getCategories(),
+            //    'attribute' => 'category',
+            //    'filterInputOptions' => ['class' => 'form-control', 'id' => 'category'],
+            //],
             [
                 'format' => 'raw',
                 'attribute' => 'message',
