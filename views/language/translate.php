@@ -49,13 +49,32 @@ $this->params['breadcrumbs'][] = $this->title;
             //    'attribute' => 'category',
             //    'filterInputOptions' => ['class' => 'form-control', 'id' => 'category'],
             //],
+            //[
+            //    'format' => 'html',
+            //    'attribute' => 'message',
+            //    'filterInputOptions' => ['class' => 'form-control', 'id' => 'message'],
+            //    //'visible'=>false,
+            //    'label' => Yii::t('language', 'Source'),
+            //    'content' => function ($data) {
+            //        return Html::textarea('LanguageSource[' . $data->id . ']', $data->source, ['class' => 'form-control source', 'readonly' => 'readonly']);
+            //    },
+            //],
+            //[
+            //    'format' => 'html',
+            //    'attribute' => 'message',
+            //    'filterInputOptions' => ['class' => 'form-control', 'id' => 'message'],
+            //    //'visible'=>false,
+            //    'label' => Yii::t('language', 'Source'),
+            //    'content' => function ($data) {
+            //        return Html::tag('LanguageSource[' . $data->id . ']', $data->source, ['class' => '', 'readonly' => 'readonly']);
+            //    },
+            //],
+            //'message:html',
             [
                 'format' => 'html',
                 'attribute' => 'message',
-                'filterInputOptions' => ['class' => 'form-control', 'id' => 'message'],
-                'label' => Yii::t('language', 'Source'),
                 'content' => function ($data) {
-                    return Html::textarea('LanguageSource[' . $data->id . ']', $data->source, ['class' => 'form-control source', 'readonly' => 'readonly']);
+                    return  $data->source;
                 },
             ],
             [
