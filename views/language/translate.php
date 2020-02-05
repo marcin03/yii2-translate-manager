@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             //    'filterInputOptions' => ['class' => 'form-control', 'id' => 'category'],
             //],
             [
-                'format' => 'raw',
+                'format' => 'html',
                 'attribute' => 'message',
                 'filterInputOptions' => ['class' => 'form-control', 'id' => 'message'],
                 'label' => Yii::t('language', 'Source'),
@@ -70,9 +70,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'content' => function ($data) {
 
                     $ckEditorInsteadTextarea = Yii::$app->getModule('translatemanager')->ckEditorInsteadTextarea;
-                    $text = $data->translation;
+                    $textToCheck = $data->source;
 
-                    if ($ckEditorInsteadTextarea===true||($ckEditorInsteadTextarea==='only-if-detect-html-tags'&&$text != strip_tags($text))) {
+                    if ($ckEditorInsteadTextarea===true||($ckEditorInsteadTextarea==='only-if-detect-html-tags'&&$textToCheck != strip_tags($textToCheck))) {
                         $ckEditorConfigArrayClient = Yii::$app->getModule('translatemanager')->ckEditorConfigArray;
                         $ckEditorConfigArrayDefault = [
                             'name' => "LanguageTranslate[{$data->id}]",
