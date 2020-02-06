@@ -8,11 +8,16 @@
 /* @var $this \yii\web\View */
 /* @var $newDataProvider \yii\data\ArrayDataProvider */
 
+use lajax\translatemanager\helpers\Language;
 use yii\grid\GridView;
 
 ?>
 
 <?php if ($newDataProvider->totalCount > 0) : ?>
+
+    <?php
+    $allCategoriesArray = array_merge(Language::getCategories(), Yii::$app->getModule('translatemanager')->languageSourcesCategoriesWithLabels);
+    ?>
 
     <?=
 
@@ -24,10 +29,14 @@ use yii\grid\GridView;
             //'category',
             [
                 'attribute' => 'category',
-                'label' => 'Kategoria'
+                'label' => 'Kategoria',
+                'content' => function($model)use($allCategoriesArray){
+                    return $allCategoriesArray[$model['category']];
+                }
             ],
             //'message',
             [
+                'format' => 'raw',
                 'attribute' => 'message',
                 'label' => 'Źródło'
             ],

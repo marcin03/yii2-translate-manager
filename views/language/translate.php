@@ -38,17 +38,21 @@ $this->params['breadcrumbs'][] = $this->title;
     ]);
     echo $form->field($searchModel, 'source')->dropDownList(['' => Yii::t('language', 'Original')] + Lang::getLanguageNames(true))->label(Yii::t('language', 'Source language'));
     ActiveForm::end();
+    $allCategoriesArray = array_merge(Language::getCategories(), Yii::$app->getModule('translatemanager')->languageSourcesCategoriesWithLabels);
     echo GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            //[
-            //    'format' => 'raw',
-            //    'filter' => Language::getCategories(),
-            //    'attribute' => 'category',
-            //    'filterInputOptions' => ['class' => 'form-control', 'id' => 'category'],
-            //],
+            [
+                'format' => 'raw',
+                'filter' => $allCategoriesArray,
+                'attribute' => 'category',
+                'filterInputOptions' => ['class' => 'form-control', 'id' => 'category'],
+                'value' => function($model)use($allCategoriesArray){
+                  return $allCategoriesArray[$model->category];
+                }
+            ],
             //[
             //    'format' => 'html',
             //    'attribute' => 'message',

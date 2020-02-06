@@ -4,6 +4,8 @@
  *
  * @since 1.4
  */
+
+use lajax\translatemanager\helpers\Language;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -22,6 +24,10 @@ use yii\helpers\Url;
 
 <?php if ($oldDataProvider->totalCount > 0) : ?>
 
+    <?php
+    $allCategoriesArray = array_merge(Language::getCategories(), Yii::$app->getModule('translatemanager')->languageSourcesCategoriesWithLabels);
+    ?>
+
     <?=
 
     GridView::widget([
@@ -39,10 +45,14 @@ use yii\helpers\Url;
             //'category',
             [
                 'attribute' => 'category',
-                'label' => 'Kategoria'
+                'label' => 'Kategoria',
+                'content' => function($model)use($allCategoriesArray){
+                    return $allCategoriesArray[$model['category']];
+                }
             ],
             //'message',
             [
+                'format' => 'raw',
                 'attribute' => 'message',
                 'label' => 'Źródło'
             ],

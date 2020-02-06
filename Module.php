@@ -297,6 +297,7 @@ class Module extends \yii\base\Module
      */
     public $ckEditorInsteadTextarea = 'only-if-detect-html-tags';
     public $ckEditorConfigArray = ['preset' => 'basic'];
+    public $languageSourcesCategoriesWithLabels = [];
 
     /**
      * @throws InvalidConfigException
