@@ -33,7 +33,7 @@ composer require lajax/yii2-translate-manager
 To use this extension with ckeditor from marcin03/yii2-translate-manager custom branch, edit your composer.json:
 ```
  "require": {
-      "lajax/yii2-translate-manager": "dev-custom"
+      "lajax/yii2-translate-manager": "dev-master"
  },
  "repositories": [
       {
