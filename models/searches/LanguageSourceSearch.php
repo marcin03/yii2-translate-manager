@@ -69,6 +69,7 @@ class LanguageSourceSearch extends LanguageSource
         $query = LanguageSource::find();
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
+            'sort'=> ['defaultOrder' => ['id'=>SORT_DESC]]
         ]);
 
         $dataProvider->setSort([
