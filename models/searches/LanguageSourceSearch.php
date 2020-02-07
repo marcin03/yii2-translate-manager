@@ -69,7 +69,6 @@ class LanguageSourceSearch extends LanguageSource
         $query = LanguageSource::find();
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
-            'sort'=> ['defaultOrder' => ['id'=>SORT_DESC]]
         ]);
 
         $dataProvider->setSort([
@@ -83,6 +82,7 @@ class LanguageSourceSearch extends LanguageSource
                     'label' => Yii::t('language', 'Translation'),
                 ],
             ],
+            'defaultOrder' => ['id'=>SORT_DESC]
         ]);
 
         if (!($this->load($params) && $this->validate())) {
