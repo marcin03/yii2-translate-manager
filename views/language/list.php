@@ -28,7 +28,16 @@ $this->params['breadcrumbs'][] = $this->title;
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
-            'language_id',
+            //'language_id',
+            [
+                'format' => 'raw',
+                'attribute' => 'language_id',
+                'content' => function ($model) {
+                    return Html::a("$model->language_id", ['language/translate', 'language_id' => $model->language_id], [
+                        'title' => Yii::t('language', 'Translate'),
+                        'data-pjax' => '0',
+                    ]);                },
+            ],
             'name',
             //'name_ascii',
             [

@@ -2,6 +2,7 @@
 
 namespace lajax\translatemanager\controllers\actions;
 
+use lajax\translatemanager\services\Optimizer;
 use Yii;
 use lajax\translatemanager\models\searches\LanguageSearch;
 use lajax\translatemanager\bundles\LanguageAsset;
@@ -36,6 +37,10 @@ class ListAction extends \yii\base\Action
         $searchModel = new LanguageSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams());
         $dataProvider->sort = ['defaultOrder' => ['status' => SORT_DESC]];
+
+        //Optimize db: remove unused strings and maybe add new
+        $optimizer = new Optimizer();
+        $optimizer->run();
 
         return $this->controller->render('list', [
             'dataProvider' => $dataProvider,

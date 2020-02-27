@@ -64,7 +64,7 @@ class LanguageSource extends \yii\db\ActiveRecord
     {
         return [
             'id' => Yii::t('model', 'ID'),
-            'category' => Yii::t('model', 'Katgoria'),
+            'category' => Yii::t('model', 'Kategoria'),
             'message' => Yii::t('model', 'Message'),
         ];
     }

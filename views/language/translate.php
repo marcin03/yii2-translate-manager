@@ -90,6 +90,10 @@ $this->params['breadcrumbs'][] = $this->title;
                     'placeholder' => $searchEmptyCommand ? Yii::t('language', 'Enter "{command}" to search for empty translations.', ['command' => $searchEmptyCommand]) : '',
                 ],
                 'label' => Yii::t('language', 'Translation'),
+                'contentOptions' => [
+                    //'style' => 'min-width:350px',
+                    'class' => 'translation-column'
+                ],
                 'content' => function ($data) {
 
                     $ckEditorInsteadTextarea = Yii::$app->getModule('translatemanager')->ckEditorInsteadTextarea;
